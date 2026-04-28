@@ -1,0 +1,30 @@
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+
+        '''
+        top down approach, lets deploy memoization
+
+        '''
+
+        #lets do a dfs, that basically does the decision tree
+        memo={len(s) :True}
+        def dfs(i):
+            if i in memo:
+                return memo[i]
+            #base case
+            
+
+
+            for word in wordDict:
+                if i+len(word)<= len(s) and s[i:i+len(word)]==word:
+                    if dfs(i+len(word)):
+                        memo[i]=True
+                        return True
+            memo[i]=False
+            return False
+        
+        return dfs(0)
+
+                    
+
+        
